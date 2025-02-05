@@ -6,8 +6,9 @@
     <title>T1 Hub - Статус</title>
     <meta name="description" content="T1 Hub - разработка скриптов для Doors и TSB.">
     <meta name="keywords" content="Doors и TSB, скрипты, разработка">
-<link rel="icon" href="https://raw.githubusercontent.com/Over-Nixeolex-Heavor/T1.hub/refs/heads/main/t1_remake.ico" type="image/x-icon">
-<link rel="shortcut icon" href="https://raw.githubusercontent.com/Over-Nixeolex-Heavor/T1.hub/refs/heads/main/t1_remake.ico" type="image/x-icon">
+    <link rel="icon" href="https://raw.githubusercontent.com/Over-Nixeolex-Heavor/T1.hub/refs/heads/main/t1_remake.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="https://raw.githubusercontent.com/Over-Nixeolex-Heavor/T1.hub/refs/heads/main/t1_remake.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 
     <style>
         :root {
@@ -19,7 +20,7 @@
 
         body {
             margin: 0;
-            font-family: 'Segoe UI', system-ui, sans-serif;
+            font-family: 'Roboto', sans-serif;
             min-height: 100vh;
             background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
                         url('https://i.ibb.co/Fbkk9Ld/photo-2024-12-24-15-19-06.jpg') center/cover fixed;
@@ -44,7 +45,7 @@
         h1 {
             color: var(--primary-color);
             margin: 0 0 1.5rem;
-            font-size: 1.8rem;
+            font-size: 2rem;
             text-align: center;
         }
 
@@ -86,6 +87,7 @@
             display: flex;
             align-items: center;
             gap: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
         .btn-primary {
@@ -95,6 +97,16 @@
 
         .btn-primary:hover {
             background: #2980b9;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: #1f2d3a;
             transform: translateY(-2px);
         }
 
@@ -126,7 +138,13 @@
             color: white;
             padding: 1rem 2rem;
             border-radius: 5px;
-            transition: right 0.3s ease;
+            transition: right 0.3s ease, opacity 0.3s ease;
+            opacity: 0;
+        }
+
+        .notification.show {
+            right: 20px;
+            opacity: 1;
         }
 
         @media (max-width: 480px) {
@@ -156,17 +174,15 @@
                 📋 Скопировать статус
             </button>
             <a href="https://over-nixeolex-heavor.github.io/T1.hub/Scripts.html" class="btn btn-secondary" target="_blank">
-            🌐 Перейти на сайт
+                🌐 Перейти на сайт
             </a>
         </div>
-    </div>
 
         <div class="features-list">
             <h2 style="color: var(--primary-color); margin-bottom: 1rem;">Преимущества:</h2>
             <ul>
                 <li>Оптимизированные и стабильные решения</li>
                 <li>Регулярные обновления и улучшения</li>
-
             </ul>
         </div>
     </div>
@@ -178,9 +194,9 @@
         const notification = document.getElementById('notification');
 
         function showNotification() {
-            notification.style.right = '20px';
+            notification.classList.add('show');
             setTimeout(() => {
-                notification.style.right = '-300px';
+                notification.classList.remove('show');
             }, 2000);
         }
 
